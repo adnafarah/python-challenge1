@@ -1,3 +1,4 @@
+#import dependencies - os module and csv module
 import os 
 import csv
 
