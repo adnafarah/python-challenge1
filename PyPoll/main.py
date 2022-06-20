@@ -3,20 +3,22 @@ import os
 import csv
 
 
-
+#set csv path and open using context manager
 csvpath = (r'C:\Users\A454\Desktop\PYHWK\PyPoll\Resources\election_data.csv')
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',') 
 
+    #skip header row
     header = []
     header = next(csvreader)
 
-    
+    #set variables that store the number of votes for each candidate using their initials, and 1 variable for the total number of votes
     ccs_count = 0
     dd_count = 0
     rad_count = 0
     total_votes = 0
 
+    #loop over the rows in the csv files and add up the votes for each candidate
     for i in csvreader:
         total_votes = total_votes + 1
         if i[2] == "Charles Casper Stockham":
@@ -28,7 +30,8 @@ with open(csvpath) as csvfile:
 
 
 
-#file.write(print("Election Results"))
+#printing the analysis
+            
 print("Total Votes: " + str(total_votes))
 
 #calculate percentages of votes for each candidate, rounded to 3 decimal places
@@ -41,7 +44,7 @@ print("Charles Casper Stockham: " + str(ccs_percentage) + "%  (" + str(ccs_count
 print("Diana DeGette: " + str(dd_percentage) + "%  (" + str(dd_count) + ")")
 print("Raymon Anthony Doane: " + str(rad_percentage) + "%  (" + str(rad_count) + ")")
 
-#getting the winner
+#Getting the winner
 
 
 

@@ -2,14 +2,13 @@
 import os
 import csv
 
+#set path to csv file 
 csvpath = (r'C:\Users\A454\Desktop\PYHWK\PyBank\Resources\budget_data.csv')
 
 #create empty list for profit/loss changes that will be calculated later
 changes_list = []
-#initialise 
-#prev = 0
 
-
+#open csvfile using context manager
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
@@ -30,9 +29,10 @@ with open(csvpath) as csvfile:
     prev = int(first_line[1])
     totalpl = int(first_line[1])
 
-    #initialist total months
+    #initialise the 'total months' variable
     total_months = 0
-    
+
+    #start a loop
     for line in csvreader:
         totalpl += int(line[1]) #calculating total profit/loss
         changes_list.append(int(line[1]) - prev) #building list that contains the changes in profit/loss over period
@@ -51,8 +51,10 @@ with open(csvpath) as csvfile:
     for line in csvreaders:
         total_months = total_months + 1
 
+#Printing the analysis
 
 print("Financial Analysis")
+
 #print total months
 print("Total Months: " + str(total_months))
 
